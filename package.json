@@ -2,5 +2,16 @@
   "dependencies": {
     "express": "^4.18.2",
     "openai": "^4.15.4"
-  }
+  },
+  "name": "cpod",
+    "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "start":"node main.js"
+    },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
