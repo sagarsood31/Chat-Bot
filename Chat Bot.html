@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenAI Chatbot</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0074d9;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #response {
+            margin: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>OpenAI Chatbot</h1>
+    <textarea id="userPrompt" placeholder="Enter your prompt"></textarea>
+    <button onclick="getChatResponse()">Get Response</button>
+    <div id="response"></div>
+
+    <script>
+        async function getChatResponse() {
+            const userPrompt = document.getElementById('userPrompt').value;
+            const responseContainer = document.getElementById('response');
+
+            if (!userPrompt) {
+                responseContainer.innerHTML = 'Please enter a prompt.';
+                return;
+            }
+
+            try {
+                const response = await fetch('/getResponse', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const data = await response.json();
+                responseContainer.innerHTML = data;
+            } catch (error) {
+                console.error('Error:', error);
+                responseContainer.innerHTML = 'An error occurred. Please try again.';
+            }
+        }
+    </script>
+</body>
+</html>

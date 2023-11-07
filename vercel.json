@@ -1,0 +1,17 @@
+{
+
+"version": 2,
+"builds": [
+{
+    "scr":"main.js",
+    "use" : "@now/node"
+}
+],
+
+"routes": [
+{
+    "src": "/(.*)",
+    "dest": "main.js"
+}
+]
+}
